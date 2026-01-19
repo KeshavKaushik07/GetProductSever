@@ -31,7 +31,9 @@ app.use((req,resp,next)=>{
     next();
 })
 
-
+app.get("/",(req,resp)=>{
+    resp.send("this is home page");
+})
 app.use("/api/v1/test",require("./Routes/testRoute"));
 app.use("/api/v1/auth",require("./Routes/authRoute"));
 app.use("/api/v1/user",require("./Routes/userRoutes"));
