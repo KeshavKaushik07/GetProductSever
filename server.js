@@ -11,7 +11,7 @@ dotenv.config();
 let isConnected = false;
 async function connectMongoDB() {
     try{
-        await connectDB();
+       await connectDB();
         isConnected = true;
         console.log("connected to DB");
     }catch(err){
@@ -23,10 +23,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use((req,resp,next)=>{
+app.use(async (req,resp,next)=>{
     if(!isConnected)
     {
-        connectMongoDB();
+       await connectMongoDB();
     }
     next();
 })
